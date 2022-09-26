@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ASPNetCoreInventory.Models.User
+
+@{
     ViewBag.Title = "ลงทะเบียน";
     Layout = "~/Views/Shared/_Authen.cshtml";
 }
@@ -13,43 +15,65 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">ลงทะเบียนเข้าใช้งาน</h1>
                     </div>
-                    <form class="user">
+
+                    @if (ViewBag.Message != null)
+                    {
+                        @Html.Raw(ViewBag.Message)
+                    }
+
+                    <form asp-action="Register" method="post">
+
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                                <label asp-for="FirstName" class="control-label"></label>
+                                <input asp-for="FirstName" class="form-control form-control-user">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                                <label asp-for="LastName" class="control-label"></label>
+                                <input asp-for="LastName" class="form-control form-control-user">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
-                        </div>
+
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                <label asp-for="EmailID" class="control-label"></label>
+                                <input asp-for="EmailID" class="form-control form-control-user">
+                                <span asp-validation-for="EmailID" class="text-danger"></span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                <label asp-for="DateOfBirth" class="control-label"></label>
+                                <input asp-for="DateOfBirth" class="form-control form-control-user">
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                             </div>
                         </div>
-                        <a href="/login" class="btn btn-primary btn-user btn-block">
-                            Register Account
-                        </a>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control form-control-user">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label asp-for="ConfirmPassword" class="control-label"></label>
+                                <input asp-for="ConfirmPassword" class="form-control form-control-user">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block" />
                         <hr>
-                        <a href="/login" class="btn btn-google btn-user btn-block">
+                        <a href="/Frontend/login" class="btn btn-google btn-user btn-block">
                             <i class="fab fa-google fa-fw"></i> Register with Google
                         </a>
-                        <a href="/login" class="btn btn-facebook btn-user btn-block">
+                        <a href="/Frontend/login" class="btn btn-facebook btn-user btn-block">
                             <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                         </a>
                     </form>
                     <hr>
                     <div class="text-center">
-                        <a class="small" href="#">Forgot Password?</a>
-                    </div>
-                    <div class="text-center">
-                        <a class="small" href="/login">Already have an account? Login!</a>
+                        @Html.ActionLink("เป็นสมาชิกอยู่แล้ว? เข้าสู่ระบบ", "Login", "Frontend", null, new { @class = "small" })
                     </div>
                 </div>
             </div>

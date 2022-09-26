@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ASPNetCoreInventory.Models.User
+
+@{
     ViewBag.Title = "เข้าสู่ระบบ";
     Layout = "~/Views/Shared/_Authen.cshtml";
 }
@@ -13,38 +15,42 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">เข้าสู่ระบบ</h1>
                     </div>
-                    <form class="user">
+                    @if (ViewBag.Message != null)
+                    {
+                        @Html.Raw(ViewBag.Message)
+                    }
 
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-user"
-                                   id="exampleInputEmail" aria-describedby="emailHelp"
-                                   placeholder="Enter Email Address...">
-                        </div>
+                <form asp-action="Login" method="post" class="user">
 
-                        <div class="form-group">
-                            <input type="password" class="form-control form-control-user"
-                                   id="exampleInputPassword" placeholder="Password">
+                    <div class="form-group">
+                        <label asp-for="EmailID" class="control-label"></label>
+                        <input asp-for="EmailID" class="form-control form-control-user">
+                        <span asp-validation-for="EmailID" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control form-control-user">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                            <label class="custom-control-label" for="customCheck">
+                                Remember
+                                Me
+                            </label>
                         </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox small">
-                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                <label class="custom-control-label" for="customCheck">
-                                    Remember
-                                    Me
-                                </label>
-                            </div>
-                        </div>
-                        <a href="/backend" class="btn btn-primary btn-user btn-block">
-                            Login
-                        </a>
-                        <hr>
-                        <a href="/backend" class="btn btn-google btn-user btn-block">
-                            <i class="fab fa-google fa-fw"></i> Login with Google
-                        </a>
-                        <a href="/backend" class="btn btn-facebook btn-user btn-block">
-                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                        </a>
-                    </form>
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" />
+                    <hr>
+                    <a href="#" class="btn btn-google btn-user btn-block">
+                        <i class="fab fa-google fa-fw"></i> Login with Google
+                    </a>
+                    <a href="#" class="btn btn-facebook btn-user btn-block">
+                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                    </a>
+                </form>
                     <hr>
                     <div class="text-center">
                         <a class="small" href="#">ลืมรหัสผ่าน ?</a>

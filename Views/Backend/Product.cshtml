@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Product";
+}
+
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>Product List</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ProductPicture</th>
+            <th>ProductID</th>
+            <th>ProductName</th>
+            <th>CategoryID</th>
+            <th>UnitPrice</th>
+            <th>UnitInStock</th>
+            <th>CreatedDate</th>
+            <th>ModifiedDate</th>
+        </tr>
+        <tr>
+            <td>NoImg</td>
+            <td>1</td>
+            <td>iPhone 12 Pro</td>
+            <td>Mobile</td>
+            <td>20000</td>
+            <td>10</td>
+            <td>10/10/2021</td>
+            <td>10/10/2021</td>
+        </tr>
+    </table>
+</div>

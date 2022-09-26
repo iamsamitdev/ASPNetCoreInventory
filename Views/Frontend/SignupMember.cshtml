@@ -1,0 +1,56 @@
+﻿@model ASPNetCoreInventory.Models.tb_Member
+
+@{
+    ViewBag.Title = "ลงทะเบียน";
+}
+
+<div class="container mb-5">
+    <div class="col-md-4 offset-md-4">
+        <h4 class="text-center mt-5 mb-3">ลงทะเบียนที่นี่</h4>
+        @if (ViewBag.Message != null)
+        {
+            @Html.Raw(ViewBag.Message)
+        }
+    <form asp-action="Signup" method="post">
+
+        <div class="form-group">
+            <label asp-for="Member_Firstname" class="control-label"></label>
+            <input asp-for="Member_Firstname" class="form-control" />
+            <span asp-validation-for="Member_Firstname" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Member_Lastname" class="control-label"></label>
+            <input asp-for="Member_Lastname" class="form-control" />
+            <span asp-validation-for="Member_Lastname" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Member_Email" class="control-label"></label>
+            <input asp-for="Member_Email" class="form-control" />
+            <span asp-validation-for="Member_Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Member_Password" class="control-label"></label>
+            <input asp-for="Member_Password" class="form-control" />
+            <span asp-validation-for="Member_Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="control-label"></label>
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Member_Birthdate" class="control-label"></label>
+            <input asp-for="Member_Birthdate" class="form-control" />
+            <span asp-validation-for="Member_Birthdate" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+    </div>
+</div>

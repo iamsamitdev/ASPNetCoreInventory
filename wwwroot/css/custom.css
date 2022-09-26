@@ -10,6 +10,12 @@ section.footer {
     width: 100%;
 }
 
+
+.field-validation-error{
+    display:block;
+    margin-top: 5px !important;
+}
+
 @media only screen and (max-width: 600px) {
     .carousel-item img {
         width: auto !important;
